@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Portfolio - Alex Storm</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), 
+                              url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .game-card {
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .game-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
+            border-color: rgba(0, 255, 255, 0.5);
+        }
+        
+        .skill-bar {
+            background: linear-gradient(90deg, #00ffff, #ff00ff);
+            height: 8px;
+            border-radius: 4px;
+            transition: width 2s ease-in-out;
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #00ffff;
+            border-radius: 50%;
+            animation: particle-float 6s infinite linear;
+        }
+        
+        @keyframes particle-float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(45deg, #00ffff, #ff00ff, #ffff00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="bg-black text-white overflow-x-hidden">
+    <!-- Floating Particles -->
+    <div id="particles" class="fixed inset-0 pointer-events-none z-0"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-black bg-opacity-80 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="text-2xl font-bold gradient-text">GameDev</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="hover:text-cyan-400 transition-colors">Home</a>
+                    <a href="#about" class="hover:text-cyan-400 transition-colors">About</a>
+                    <a href="#projects" class="hover:text-cyan-400 transition-colors">Projects</a>
+                    <a href="#skills" class="hover:text-cyan-400 transition-colors">Skills</a>
+                    <a href="#contact" class="hover:text-cyan-400 transition-colors">Contact</a>
+                </div>
+                <button class="md:hidden text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center relative">
+        <div class="text-center z-10">
+            <h1 class="text-6xl md:text-8xl font-bold mb-6 glow-text floating">
+                ALEX <span class="gradient-text">STORM</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 text-gray-300">Game Developer & Digital Artist</p>
+            <div class="space-x-4">
+                <button class="bg-gradient-to-r from-cyan-500 to-blue-600 px-8 py-3 rounded-full hover:shadow-lg hover:shadow-cyan-500/50 transition-all">
+                    View Projects
+                </button>
+                <button class="border border-cyan-500 px-8 py-3 rounded-full hover:bg-cyan-500 hover:text-black transition-all">
+                    Contact Me
+                </button>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 relative z-10">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-5xl font-bold text-center mb-16 gradient-text">About Me</h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        Passionate game developer with over 5 years of experience creating immersive gaming experiences. 
+                        Specialized in Unity, Unreal Engine, and cutting-edge game mechanics.
+                    </p>
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        From indie mobile games to AAA console titles, I bring creativity and technical expertise 
+                        to every project. Always pushing the boundaries of what's possible in interactive entertainment.
+                    </p>
+                    <div class="flex space-x-4">
+                        <span class="bg-cyan-600 px-4 py-2 rounded-full text-sm">Unity Expert</span>
+                        <span class="bg-purple-600 px-4 py-2 rounded-full text-sm">Unreal Engine</span>
+                        <span class="bg-green-600 px-4 py-2 rounded-full text-sm">C# Developer</span>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="game-card p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold mb-4 text-cyan-400">Experience</h3>
+                        <ul class="space-y-3">
+                            <li class="flex justify-between">
+                                <span>Senior Game Developer</span>
+                                <span class="text-gray-400">2020-Present</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>Unity Developer</span>
+                                <span class="text-gray-400">2018-2020</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>Game Designer</span>
+                                <span class="text-gray-400">2016-2018</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-4 bg-gray-900 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-5xl font-bold text-center mb-16 gradient-text">Featured Projects</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="game-card rounded-2xl overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-purple-600 to-blue-800 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="text-4xl mb-2">🎮</div>
+                            <h3 class="text-xl font-bold">Cyber Legends</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-300 mb-4">A futuristic RPG with stunning visuals and immersive gameplay mechanics.</p>
+                        <div class="flex space-x-2 mb-4">
+                            <span class="bg-blue-600 px-2 py-1 rounded text-xs">Unity</span>
+                            <span class="bg-green-600 px-2 py-1 rounded text-xs">C#</span>
+                            <span class="bg-purple-600 px-2 py-1 rounded text-xs">3D</span>
+                        </div>
+                        <button class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 py-2 rounded-lg hover:shadow-lg transition-all">
+                            View Project
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="game-card rounded-2xl overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-red-600 to-orange-800 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="text-4xl mb-2">⚔️</div>
+                            <h3 class="text-xl font-bold">Battle Arena</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-300 mb-4">Multiplayer combat game with real-time strategy elements.</p>
+                        <div class="flex space-x-2 mb-4">
+                            <span class="bg-blue-600 px-2 py-1 rounded text-xs">Unreal</span>
+                            <span class="bg-red-600 px-2 py-1 rounded text-xs">C++</span>
+                            <span class="bg-yellow-600 px-2 py-1 rounded text-xs">Multiplayer</span>
+                        </div>
+                        <button class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 py-2 rounded-lg hover:shadow-lg transition-all">
+                            View Project
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="game-card rounded-2xl overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-green-600 to-teal-800 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="text-4xl mb-2">🏞️</div>
+                            <h3 class="text-xl font-bold">Nature's Quest</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-300 mb-4">Environmental adventure game with puzzle-solving mechanics.</p>
+                        <div class="flex space-x-2 mb-4">
+                            <span class="bg-blue-600 px-2 py-1 rounded text-xs">Unity</span>
+                            <span class="bg-green-600 px-2 py-1 rounded text-xs">C#</span>
+                            <span class="bg-indigo-600 px-2 py-1 rounded text-xs">Mobile</span>
+                        </div>
+                        <button class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 py-2 rounded-lg hover:shadow-lg transition-all">
+                            View Project
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-4 relative z-10">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-5xl font-bold text-center mb-16 gradient-text">Skills & Technologies</h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-lg font-semibold">Unity Engine</span>
+                            <span class="text-cyan-400">95%</span>
+                        </div>
+                        <div class="bg-gray-700 rounded-full h-3">
+                            <div class="skill-bar rounded-full" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-lg font-semibold">C# Programming</span>
+                            <span class="text-cyan-400">90%</span>
+                        </div>
+                        <div class="bg-gray-700 rounded-full h-3">
+                            <div class="skill-bar rounded-full" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-lg font-semibold">Unreal Engine</span>
+                            <span class="text-cyan-400">85%</span>
+                        </div>
+                        <div class="bg-gray-700 rounded-full h-3">
+                            <div class="skill-bar rounded-full" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-lg font-semibold">Game Design</span>
+                            <span class="text-cyan-400">88%</span>
+                        </div>
+                        <div class="bg-gray-700 rounded-full h-3">
+                            <div class="skill-bar rounded-full" style="width: 88%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="game-card p-6 rounded-xl text-center">
+                        <div class="text-4xl mb-4">🎯</div>
+                        <h3 class="text-xl font-bold mb-2 text-cyan-400">Game Logic</h3>
+                        <p class="text-gray-300">Complex gameplay mechanics and AI systems</p>
+                    </div>
+                    
+                    <div class="game-card p-6 rounded-xl text-center">
+                        <div class="text-4xl mb-4">🎨</div>
+                        <h3 class="text-xl font-bold mb-2 text-purple-400">UI/UX Design</h3>
+                        <p class="text-gray-300">Intuitive and beautiful game interfaces</p>
+                    </div>
+                    
+                    <div class="game-card p-6 rounded-xl text-center">
+                        <div class="text-4xl mb-4">🔧</div>
+                        <h3 class="text-xl font-bold mb-2 text-green-400">Optimization</h3>
+                        <p class="text-gray-300">Performance tuning and memory management</p>
+                    </div>
+                    
+                    <div class="game-card p-6 rounded-xl text-center">
+                        <div class="text-4xl mb-4">🌐</div>
+                        <h3 class="text-xl font-bold mb-2 text-yellow-400">Multiplayer</h3>
+                        <p class="text-gray-300">Networking and real-time gameplay</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 bg-gray-900 relative z-10">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-5xl font-bold mb-16 gradient-text">Let's Create Something Amazing</h2>
+            <p class="text-xl text-gray-300 mb-12">Ready to bring your game ideas to life? Let's collaborate!</p>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="game-card p-6 rounded-xl">
+                    <div class="text-4xl mb-4">📧</div>
+                    <h3 class="text-xl font-bold mb-2 text-cyan-400">Email</h3>
+                    <p class="text-gray-300">alex@gamedev.com</p>
+                </div>
+                
+                <div class="game-card p-6 rounded-xl">
+                    <div class="text-4xl mb-4">💬</div>
+                    <h3 class="text-xl font-bold mb-2 text-purple-400">Discord</h3>
+                    <p class="text-gray-300">AlexStorm#1234</p>
+                </div>
+                
+                <div class="game-card p-6 rounded-xl">
+                    <div class="text-4xl mb-4">🌐</div>
+                    <h3 class="text-xl font-bold mb-2 text-green-400">Portfolio</h3>
+                    <p class="text-gray-300">alexstorm.dev</p>
+                </div>
+            </div>
+            
+            <div class="space-x-4">
+                <button class="bg-gradient-to-r from-cyan-500 to-blue-600 px-8 py-3 rounded-full hover:shadow-lg hover:shadow-cyan-500/50 transition-all">
+                    Start a Project
+                </button>
+                <button class="border border-cyan-500 px-8 py-3 rounded-full hover:bg-cyan-500 hover:text-black transition-all">
+                    Download Resume
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-4 bg-black relative z-10">
+        <div class="max-w-6xl mx-auto text-center">
+            <p class="text-gray-400">&copy; 2024 Alex Storm. Crafted with passion for gaming.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animate skill bars when in viewport
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const skillBars = entry.target.querySelectorAll('.skill-bar');
+                    skillBars.forEach(bar => {
+                        bar.style.width = bar.parentElement.previousElementSibling.querySelector('span:last-child').textContent;
+                    });
+                }
+            });
+        }, observerOptions);
+
+        document.querySelector('#skills').addEventListener('DOMContentLoaded', () => {
+            observer.observe(document.querySelector('#skills'));
+        });
+
+        // Initialize particles
+        createParticles();
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero-bg');
+            const speed = scrolled * 0.5;
+            parallax.style.transform = `translateY(${speed}px)`;
+        });
+    </script>
+</body>
+</html>

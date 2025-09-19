@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savory Delights - Fine Dining Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#d4af37',
+                        secondary: '#8b5a2b',
+                        accent: '#c41e3a',
+                        light: '#f8f4e9',
+                        dark: '#2c1810'
+                    },
+                    fontFamily: {
+                        display: ['Playfair Display', 'serif'],
+                        body: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-pattern {
+            background: linear-gradient(to bottom right, rgba(255,255,255,0.9), rgba(248,244,233,0.9));
+        }
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+    </style>
+</head>
+<body class="bg-light font-body text-dark">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-display font-bold text-primary">Savory Delights</h1>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-dark hover:text-primary transition-colors font-medium">Home</a>
+                    <a href="#menu" class="text-dark hover:text-primary transition-colors font-medium">Menu</a>
+                    <a href="#about" class="text-dark hover:text-primary transition-colors font-medium">About</a>
+                    <a href="#testimonials" class="text-dark hover:text-primary transition-colors font-medium">Reviews</a>
+                    <a href="#contact" class="text-dark hover:text-primary transition-colors font-medium">Contact</a>
+                </div>
+                
+                <div class="hidden md:block">
+                    <button class="bg-primary text-white px-6 py-2 rounded-full hover:bg-secondary transition-colors font-medium">
+                        Reserve Table
+                    </button>
+                </div>
+                
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-dark">
+                        <i data-lucide="menu" class="h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="block px-3 py-2 text-dark hover:text-primary">Home</a>
+                <a href="#menu" class="block px-3 py-2 text-dark hover:text-primary">Menu</a>
+                <a href="#about" class="block px-3 py-2 text-dark hover:text-primary">About</a>
+                <a href="#testimonials" class="block px-3 py-2 text-dark hover:text-primary">Reviews</a>
+                <a href="#contact" class="block px-3 py-2 text-dark hover:text-primary">Contact</a>
+                <button class="w-full bg-primary text-white px-6 py-2 rounded-full hover:bg-secondary mt-4">
+                    Reserve Table
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-20 hero-pattern">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">
+                        Experience the Art of <span class="text-primary">Fine Dining</span>
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        Indulge in a culinary journey where traditional flavors meet modern techniques. Our master chefs create unforgettable dining experiences with locally sourced ingredients and passion in every dish.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="bg-primary text-white px-8 py-4 rounded-full hover:bg-secondary transition-colors font-semibold">
+                            View Our Menu
+                        </button>
+                        <button class="border-2 border-primary text-primary px-8 py-4 rounded-full hover:bg-primary hover:text-white transition-colors font-semibold">
+                            Book a Table
+                        </button>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="rounded-2xl overflow-hidden shadow-2xl">
+                        <img 
+                            src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8d3f1e1a-79c3-40a1-ac53-33f295f5b42d.png" 
+                            alt="Elegant restaurant dining room with modern decor and ambient lighting showcasing a beautifully set table"
+                            class="w-full h-auto"
+                        />
+                    </div>
+                    <div class="absolute -bottom-6 -left-6 w-40 h-40 bg-primary rounded-2xl shadow-xl overflow-hidden">
+                        <img 
+                            src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3740ef69-a4db-4bae-9f32-6aa4a68c89f1.png" 
+                            alt="Gourmet seafood pasta dish with fresh herbs and Parmesan cheese in a white ceramic bowl"
+                            class="w-full h-full object-cover"
+                        />
+                    </div>
+                    <div class="absolute -top-6 -right-6 w-32 h-32 bg-accent rounded-2xl shadow-xl overflow-hidden">
+                        <img 
+                            src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/19fd5ed5-d079-485b-aa8d-257c7a6f97fe.png" 
+                            alt="Artisan dessert platter featuring chocolate mousse and fresh berries with mint garnish"
+                            class="w-full h-full object-cover"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Dishes -->
+    <section id="menu" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">Signature Dishes</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Discover our chef's curated selection of exquisite dishes that showcase the best of our culinary expertise
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Dish 1 -->
+                <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300">
+                    <div class="h-64 overflow-hidden">
+                        <img 
+                            src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/192e8813-cd10-4f68-9c50-d5c8de426d66.png" 
+                            alt="Premium grilled steak with roasted vegetables and red wine reduction sauce on a wooden board"
+                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-display font-semibold">Prime Ribeye Steak</h3>
+                            <span class="text-primary font-bold text-xl">$42</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Perfectly grilled 12oz ribeye with garlic herb butter, served with seasonal vegetables and truffle mashed potatoes.
+                        </p>
+                        <button class="text-primary hover:text-secondary font-medium flex items-center">
+                            Add to order
+                            <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Dish 2 -->
+                <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300">
+                    <div class="h-64 overflow-hidden">
+                        <img 
+                            src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/4f095c95-ef4c-4b9e-ad9f-914466599525.png" 
+                            alt="Freshly prepared seafood linguine with clams, shrimp, and mussels in a white wine sauce"
+                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-display font-semibold">Seafood Linguine</h3>
+                            <span class="text-primary font-bold text-xl">$36</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Fresh pasta with shrimp, scallops, and mussels in a light white wine sauce with cherry tomatoes and fresh herbs.
+                        </p>
+                        <button class="text-primary hover:text-secondary font-medium flex items-center">
+                            Add to order
+                            <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Dish 3 -->
+                <div class="menu-card bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300">
+                    <div class="h-64 overflow-hidden">
+                        <img 
+                            src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1f062c40-b402-40da-aac5-4781f6d1853d.png" 
+                            alt="Vegetarian risotto with wild mushrooms, Parmesan cheese, and fresh thyme in a ceramic dish"
+                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-display font-semibold">Wild Mushroom Risotto</h3>
+                            <span class="text-primary font-bold text-xl">$28</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Creamy Arborio rice with assorted wild mushrooms, finished with Parmesan cheese and white truffle oil.
+                        </p>
+                        <button class="text-primary hover:text-secondary font-medium flex items-center">
+                            Add to order
+                            <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <button class="bg-primary text-white px-8 py-3 rounded-full hover:bg-secondary transition-colors font-semibold">
+                    View Full Menu
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <div class="rounded-2xl overflow-hidden shadow-xl">
+                        <img 
+                            src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5229815a-7fb3-4e31-b0c1-1736d04e404e.png" 
+                            alt="Professional chef carefully plating an elegant dish in a modern restaurant kitchen"
+                            class="w-full h-auto"
+                        />
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 w-48 h-48 bg-white rounded-2xl shadow-xl p-4">
+                        <div class="bg-primary/10 rounded-xl h-full flex items-center justify-center">
+                            <div class="text-center">
+                                <span class="text-3xl font-display font-bold text-primary">15+</span>
+                                <p class="text-sm text-gray-600">Years of Excellence</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-display font-bold mb-6">Our Culinary Story</h2>
+                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                        Founded in 2008, Savory Delights began as a small family dream to share our passion for exceptional food. Today, we continue to honor traditional recipes while embracing innovation in every dish we create.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        Our commitment to quality means we source the freshest local ingredients and work with skilled artisans who share our dedication to culinary excellence.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="flex items-center">
+                            <div class="bg-primary/10 p-3 rounded-lg mr-4">
+                                <i data-lucide="star" class="h-6 w-6 text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Fresh Ingredients</h4>
+                                <p class="text-sm text-gray-600">Locally sourced daily</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-primary/10 p-3 rounded-lg mr-4">
+                                <i data-lucide="users" class="h-6 w-6 text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Expert Chefs</h4>
+                                <p class="text-sm text-gray-600">15+ years experience</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="bg-primary text-white px-8 py-3 rounded-full hover:bg-secondary transition-colors font-semibold">
+                        Learn More About Us
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">What Our Guests Say</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Don't just take our word for it - hear from our valued guests about their dining experience
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-light p-8 rounded-2xl">
+                    <div class="flex mb-4">
+                        <div class="flex text-primary">
+                            <i data-lucide="star" class="h-5 w-5 fill-current"></i>
+                            <i data-lucide="star" class="h-5 w-5 fill-current"></i>
+                            <i data-lucide="star" class="h-5 w-5 fill-current"></i>
+                            <i data-lucide="star" class="h-5 w-5 fill-current"></i>
+                            <i data-lucide="star" class="h-5 w-5 fill-current"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">
+                        "The steak was cooked to absolute perfection. The ambiance and service were exceptional. This is now our go-to spot for special occasions!"
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-primary font-semibold">MJ</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Michael Johnson</h4>
+                            <p class="text-sm text-gray-600">Food Enthusiast</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-light p-8 rounded-2xl">
+                    <div class="flex mb-4">
+                        <div class="flex text-primary">
+                            <i data-lucide="star" class="h-5 w-5 fill-current"></i>
+                            <i data-lucide="star" class="h-5 w-5 fill-current"></i>
+                            <i data-lucide="star" class="h-5 w-5 fill-current"></i>
+                            <i data-lucide="star" class="h-5 w-5 fill-current"></i>
+                            <i data-lucide="star" class="h-5 w-5 fill-current"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">
+                        "The seafood linguine was incredible! Fresh ingredients and perfect seasoning. The wine pairing recommendation was spot on."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-primary font-semibold">SA</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Sarah Anderson</h4>
+                            <p class="text-sm text-gray-600">Regular Customer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-light p-8 rounded-2xl">
+                    <div class="flex mb-4">
+                        <div class="flex text-primary">
+                            <i data-lucide="star" class="h-5 w-5 fill-current"></i>
+                            <i data-lucide="star" class="h-5 w-5 fill-current"></i>
+                            <i data-lucide="star" class="h-5 w-5 fill-current"></i>
+                            <i data-lucide="star" class="h-5 w-5 fill-current"></i>
+                            <i data-lucide="star" class="h-5 w-5 fill-current"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">
+                        "Exceptional service and even better food. The mushroom risotto was creamy and flavorful. Will definitely be returning soon!"
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-primary font-semibold">DR</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">David Rodriguez</h4>
+                            <p class="text-sm text-gray-600">First-time Visitor</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Location -->
+    <section id="contact" class="py-20 bg-primary/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-display font-bold mb-6">Visit Us</h2>
+                    <p class="text-lg text-gray-600 mb-8">
+                        We'd love to welcome you to our restaurant. Make a reservation to ensure the perfect dining experience.
+                    </p>
+                    
+                    <div class="space-y-6 mb-8">
+                        <div class="flex items-center">
+                            <div class="bg-primary/10 p-3 rounded-lg mr-4">
+                                <i data-lucide="map-pin" class="h-6 w-6 text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Location</h4>
+                                <p class="text-gray-600">123 Gourmet Avenue, Culinary District, CA 90210</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-primary/10 p-3 rounded-lg mr-4">
+                                <i data-lucide="clock" class="h-6 w-6 text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Hours</h4>
+                                <p class="text-gray-600">Mon-Thu: 5 PM - 10 PM<br>Fri-Sun: 5 PM - 11 PM</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-primary/10 p-3 rounded-lg mr-4">
+                                <i data-lucide="phone" class="h-6 w-6 text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Reservations</h4>
+                                <p class="text-gray-600">(555) 123-4567<br>reservations@savorydelights.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <h3 class="text-2xl font-display font-bold mb-6">Make a Reservation</h3>
+                    <form class="space-y-4">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Your Name">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                                <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="your@email.com">
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Date</label>
+                                <input type="date" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Time</label>
+                                <input type="time" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Number of Guests</label>
+                            <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <option>1 person</option>
+                                <option>2 people</option>
+                                <option>3 people</option>
+                                <option>4 people</option>
+                                <option>5+ people</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg hover:bg-secondary transition-colors font-semibold">
+                            Book Table
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-display font-bold text-primary mb-4">Savory Delights</h3>
+                    <p class="text-gray-400 mb-4">
+                        Experience the art of fine dining with our exceptional cuisine and impeccable service.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i data-lucide="facebook" class="h-5 w-5"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i data-lucide="instagram" class="h-5 w-5"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i data-lucide="twitter" class="h-5 w-5"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-primary transition-colors">Home</a></li>
+                        <li><a href="#menu" class="text-gray-400 hover:text-primary transition-colors">Menu</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-primary transition-colors">About Us</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-primary transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>123 Gourmet Avenue</li>
+                        <li>Culinary District, CA 90210</li>
+                        <li>(555) 123-4567</li>
+                        <li>info@savorydelights.com</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Subscribe for updates and special offers</p>
+                    <form class="flex space-x-2">
+                        <input type="email" placeholder="Your email" class="flex-1 px-4 py-2 rounded-lg bg-dark border border-gray-600 text-white">
+                        <button class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-secondary transition-colors">
+                            <i data-lucide="send" class="h-4 w-4"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2023 Savory Delights. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
